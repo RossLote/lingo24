@@ -86,20 +86,18 @@ request.url: {}
 request.method: {}
 request.headers: {}
 request.body: {}
-response.url: {}
-response.method: {}
 response.headers: {}
-response.body: {}
+response.content: {}
+response.status_code: {}
 
 """.format(
     response.request.url,
     response.request.method,
     response.request.headers,
     response.request.body,
-    response.url,
-    response.method,
     response.headers,
-    response.body,
+    response.content,
+    response.status_code,
 )
 
         return response
