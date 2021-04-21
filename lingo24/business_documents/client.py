@@ -80,6 +80,28 @@ class Client(object):
             response = make_request()
 
         response.raise_for_status()
+
+        print """
+request.url: {}
+request.method: {}
+request.headers: {}
+request.body: {}
+response.url: {}
+response.method: {}
+response.headers: {}
+response.body: {}
+
+""".format(
+    response.request.url,
+    response.request.method,
+    response.request.headers,
+    response.request.body,
+    response.url,
+    response.method,
+    response.headers,
+    response.body,
+)
+
         return response
 
     def api_get(self, *args, **kwargs):
