@@ -1,4 +1,5 @@
 import json
+import logging
 import urlparse
 
 import requests
@@ -80,25 +81,17 @@ class Client(object):
             response = make_request()
 
         response.raise_for_status()
+        request = response.request
+        req_headers = request.headers
+        req_headers['Authorization'] = '[REMOVED]'
 
-        print """
-request.url: {}
-request.method: {}
-request.headers: {}
-request.body: {}
-response.headers: {}
-response.content: {}
-response.status_code: {}
-
-""".format(
-    response.request.url,
-    response.request.method,
-    response.request.headers,
-    response.request.body,
-    response.headers,
-    response.content,
-    response.status_code,
-)
+        logging.debug('request.url: {}'.format(request.url))
+        logging.debug('request.method: {}'.format(request.method))
+        logging.debug('request.headers: {}'.format(req_headers))
+        logging.debug('request.body: {}'.format(request.body))
+        logging.debug('response.headers: {}'.format(response.headers))
+        logging.debug('response.content: {}'.format(response.content))
+        logging.debug('response.status_code: {}'.format(response.status_code))
 
         return response
 
