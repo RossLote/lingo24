@@ -11,6 +11,8 @@ from .locales import LocaleCollection
 from .services import ServiceCollection
 from .projects import ProjectCollection
 
+logger = logging.getLogger('lingo24')
+
 
 class Client(object):
     def __init__(self, authenticator, endpoint='live', per_page=25):
@@ -85,13 +87,13 @@ class Client(object):
         req_headers = request.headers
         req_headers['Authorization'] = '[REMOVED]'
 
-        logging.debug('request.url: {}'.format(request.url))
-        logging.debug('request.method: {}'.format(request.method))
-        logging.debug('request.headers: {}'.format(req_headers))
-        logging.debug('request.body: {}'.format(request.body))
-        logging.debug('response.headers: {}'.format(response.headers))
-        logging.debug('response.content: {}'.format(response.content))
-        logging.debug('response.status_code: {}'.format(response.status_code))
+        logger.debug('request.url: {}'.format(request.url))
+        logger.debug('request.method: {}'.format(request.method))
+        logger.debug('request.headers: {}'.format(req_headers))
+        logger.debug('request.body: {}'.format(request.body))
+        logger.debug('response.headers: {}'.format(response.headers))
+        logger.debug('response.content: {}'.format(response.content))
+        logger.debug('response.status_code: {}'.format(response.status_code))
 
         return response
 
